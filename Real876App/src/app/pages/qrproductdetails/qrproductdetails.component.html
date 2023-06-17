@@ -1,0 +1,146 @@
+<section class="login-house" *ngIf="status !=1">
+    <div class="container-fluid" style=" padding-left: 23%; ">
+        <div class="col-md-8 cards">
+            <div class="container my-auto py-5">
+                <div class="row">
+                    <div class="col-10 col-lg-9 col-xl-8 mx-auto">
+                        <div class="m-t-30 card-box"
+                            style="margin-bottom: 20px;background-clip: padding-box;-moz-border-radius: 5px;border-radius: 5px;-webkit-border-radius: 5px;padding: 20px;background-color: #ffffff;box-shadow: 0 8px 42px 0 rgba(0, 0, 0, 0.08);">
+                            <div class="text-center">
+                                <h4 class="text-uppercase font-bold m-b-0">{{ checkingCode ? 'Please wait!!' : status ==
+                                    1 ? 'Success !!' : 'Error !!' }}</h4>
+                            </div>
+                            <div class="panel-body text-center">
+                                <div *ngIf="checkingCode">
+                                    <i class="fa fa-spinner fa-spin fa-3x"></i>
+                                    <p class="text-muted font-13 m-t-20" style="color: #9a9da0">
+                                        Please wait! While we processing!
+                                    </p>
+                                </div>
+
+                                <div *ngIf="!checkingCode && status == 2">
+                                    <i class="fa fa-times-circle fa-3x text-danger"></i>
+                                    <p class="text-muted font-13 m-t-20" style="color: #9a9da0">
+                                        Oops! Seems like no product found.
+                                    </p>
+                                </div>
+
+                                <div *ngIf="!checkingCode && status == 1">
+                                    <i class="fa fa-check-circle fa-3x text-success"></i>
+                                    <p class="text-muted font-13 m-t-20" style="color: #9a9da0">
+                                        Congratulations! .Your account is verified. Please login your account to
+                                        continue further.
+                                    </p>
+                                    <div class="d-grid my-4">
+                                        <button class="btn btn-primary" routerLink="/login">Login</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="page-content container p-4" *ngIf="status ==1">
+    <div class="page-header text-blue-d2">
+        <h1 class="page-title text-secondary-d1">
+            Product Detail
+            <small class="page-info">
+                <i class="fa fa-angle-double-right text-80"></i>
+                ID: {{productId}}
+            </small>
+        </h1>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-12">
+                <div class="table-c">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngIf="productsDetails?.product_name">
+                                <td>1</td>
+                                <td>Product Name</td>
+                                <td>{{productsDetails.product_name}}</td>
+                            </tr>
+                            <tr *ngIf="productsDetails?.product_description">
+                                <td>2</td>
+                                <td>Product Description</td>
+                                <td>{{productsDetails.product_description}}</td>
+                            </tr>
+                            <tr *ngIf="productsDetails?.ingredients">
+                                <td>3</td>
+                                <td>Ingredients</td>
+                                <td>{{productsDetails.ingredients}}</td>
+                            </tr>
+                            <tr *ngIf="productsDetails?.manufacturer">
+                                <td>4</td>
+                                <td>Manufacturer</td>
+                                <td>{{productsDetails.manufacturer}}</td>
+                            </tr>
+                            <tr *ngIf="productsDetails?.manufactured_date">
+                                <td>5</td>
+                                <td>Manufacturer Date</td>
+                                <td>{{productsDetails.manufactured_date}}</td>
+                            </tr>
+                            <tr *ngIf="productsDetails?.expiry_date">
+                                <td>6</td>
+                                <td>Expirey Date</td>
+                                <td>{{productsDetails.expiry_date}}</td>
+                            </tr>
+                            <tr *ngIf="productsDetails?.recyclable">
+                                <td>7</td>
+                                <td>Recylable</td>
+                                <td>{{productsDetails.recyclable}}</td>
+                            </tr>
+                            <tr *ngIf="productsDetails?.authorized_distributers">
+                                <td>8</td>
+                                <td>Authorized Distributer</td>
+                                <td>{{productsDetails.authorized_distributers}}</td>
+                            </tr>
+                            <tr *ngIf="productsDetails?.interesting_recipes">
+                                <td>9</td>
+                                <td>Intresting Recipes</td>
+                                <td>{{productsDetails.interesting_recipes}}</td>
+                            </tr>
+                            <tr *ngIf="productsDetails?.about_the_company">
+                                <td>10</td>
+                                <td>About Organization</td>
+                                <td>{{productsDetails.about_the_company}}</td>
+                            </tr>
+                            <tr *ngIf="productsDetails?.contact_us">
+                                <td>11</td>
+                                <td>Contact Us</td>
+                                <td>{{productsDetails.contact_us}}</td>
+                            </tr>
+                            <tr *ngIf="productsDetails?.nutri_score">
+                                <td>12</td>
+                                <td>Nutri Score</td>
+                                <td>{{productsDetails.nutri_score}}</td>
+                            </tr>
+                            <tr *ngIf="productsDetails?.health_warning">
+                                <td>13</td>
+                                <td>Health Warning</td>
+                                <td>{{productsDetails.health_warning}}</td>
+                            </tr>
+                            <tr *ngIf="productsDetails?.product_warning">
+                                <td>14</td>
+                                <td>Product Warning</td>
+                                <td>{{productsDetails.product_warning}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

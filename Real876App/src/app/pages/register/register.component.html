@@ -1,0 +1,287 @@
+
+    <section class="top-logo">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="top-logo-under"routerLink='./'>
+                        <img class="top-logo-under-logo" style="max-width:97px" src="assets/images/logo.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="create-account" *ngIf="!isRegistered">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-5 left-0">
+                    <div class="account-left">
+                        <img src="assets/images/left-image.png" class="img-fluid accont-img">
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="account-right">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="tabs-form">
+                                    <ul class="nav nav-tabs" id="nav-tab" role="tablist">
+                                        <li class="nav-link" [class.active] = "activeTab ==1" (click)="activeTab=1" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
+                                            <div class="media">
+                                                <img class="media-full" src="assets/images/account.png">
+                                                <div class="media-body">
+                                                  <p class="media-p">Account</p>
+                                                  <p class="media-p1">Enter username</p>
+                                                </div>
+                                              </div>
+                                        </li>
+                                        <li>
+                                            <i class="fas fa-angle-right fix-i"></i>
+                                        </li>
+                                        <li class="nav-link"  [class.active] = "activeTab ==2" (click)="activeTab=2" id="nav-profile-tab"  data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">
+                                            <!-- <div class="media">
+                                                <img class="media-full" src="assets/images/pro-file.png">
+                                                <div class="media-body">
+                                                  <p class="media-p">Personal</p>
+                                                  <p class="media-p1">Enter Information</p>
+                                                </div>
+                                              </div> -->
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="cus-tabs-data">
+                                <div class="tab-content" id="nav-tabContent">
+                                    <div class="tab-pane fade " [class.active]="activeTab ==1" [class.show]="activeTab ==1" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                        <div>
+                                        <form class="user" [formGroup]="registerForm">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="info-frm">
+                                                    <p class="info-frm-1">Account Information</p>
+                                                    <p class="info-frm-2">Enter your username password details</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="common_mar_bottom form-group">
+                                                    <label class="label-1">First name</label>
+                                                    <div class="eye-real">
+                                                        <input class="input-dt form-control" type="text" id="first_name"
+                                                            placeholder="first_name" formControlName="first_name" 
+                                                            [ngClass]="{ 'is-invalid': submitted && f['first_name'].errors }" trim>
+                                                            <div *ngIf="submitted && f['first_name'].errors" class="invalid-feedback">
+                                                                <span class="for-sub-name" *ngIf="f['first_name'].errors['required']">
+                                                                    firstname is required.
+                                                                </span>
+                                                                <span class="for-sub-name"
+                                                                *ngIf="f['first_name'].errors && f['first_name'].errors['first_name']">
+                                                                    Please,enter valid firstname.
+                                                                </span>                
+                                                            </div>
+                                                    </div>        
+                                                </div>
+                                            </div> 
+                                            <div class="col-lg-6">
+                                                <div class="common_mar_bottom form-group">
+                                                    <label class="label-1">Last Name</label>
+                                                    <div class="eye-real">
+                                                        <input class="input-dt form-control" type="text" id="last_name"
+                                                            placeholder="first_name" formControlName="last_name" 
+                                                            [ngClass]="{ 'is-invalid': submitted && f['last_name'].errors }" trim>
+                                                            <div *ngIf="submitted && f['last_name'].errors" class="invalid-feedback">
+                                                                <span class="for-sub-name" *ngIf="f['last_name'].errors['required']">
+                                                                    lastname is required.
+                                                                </span>
+                                                                <span class="for-sub-name"
+                                                                *ngIf="f['last_name'].errors && f['last_name'].errors['last_name']">
+                                                                    Please,enter valid lastname.
+                                                                </span>                
+                                                            </div>
+                                                    </div>        
+                                                </div>
+                                            </div> 
+                                            <div class="col-lg-6">
+                                                <div class="common_mar_bottom form-group">
+                                                    <label class="label-1">Email</label>
+                                                    <div class="eye-real">
+                                                        <input class="input-dt form-control" type="text" id="email"
+                                                            placeholder="johndoe@gmail.com" formControlName="email" 
+                                                            [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" trim>
+                                                            <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                                                                <span class="for-sub-name" *ngIf="f['email'].errors['required']">
+                                                                    Email is required.
+                                                                </span>
+                                                                <span class="for-sub-name"
+                                                                *ngIf="f['email'].errors && f['email'].errors['email']">
+                                                                    Please,enter valid email address.
+                                                                </span>                
+                                                            </div>
+                                                    </div>        
+                                                </div>
+                                            </div> 
+                                            <div class="col-lg-6">
+                                                <div class="common_mar_bottom form-group">
+                                                    <label class="label-1">User Name</label>
+                                                    <div class="eye-real">
+                                                        <input class="input-dt form-control" type="text" id="user_name" placeholder="user_name"
+                                                             formControlName="user_name" 
+                                                            [ngClass]="{ 'is-invalid': submitted && f['user_name'].errors }" trim>
+                                                            <div *ngIf="submitted && f['user_name'].errors" class="invalid-feedback">
+                                                                <span class="for-sub-name" *ngIf="f['user_name'].errors['required']">
+                                                                    user_name is required.
+                                                                </span>             
+                                                            </div>
+                                                    </div>        
+                                                </div>
+                                            </div> 
+                                            
+                                            <div class="col-lg-6">
+                                                <div class="common_mar_bottom form-group">
+                                                    <label class="label-1">Password</label>
+                                                    <div class="eye-real">                                                       
+                                                        <input class="input-dt form-control" id="passfld"
+                                                            placeholder="password"
+                                                            [type]="show ? 'text' : 'password'" formControlName="password"
+                                                            autocomplete="new-password" name="password" value=""
+                                                            [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"
+                                                            (keyup)="onEnter()">
+                                                        <i [className]="show ? 'fas fa-eye right-eye' : 'fas fa-eye-slash right-eye'"
+                                                            (click)="password()"></i>
+                                                    </div>
+                                                    <div class="invalid-feedback block">
+                                                        <span *ngIf="submitted && f['password'].hasError('required')">
+                                                            password is required.
+                                                        </span>
+                                                        <span>
+                                                            <div *ngIf="!f['password'].hasError('required') && f['password'].errors">
+                                                                <p class="alert-mes">
+                                                                    <i class="fa"
+                                                                        [class.fa-times-circle]="f['password'].hasError('minlength')"
+                                                                        [class.green-color]="!f['password'].hasError('minlength')"
+                                                                        [class.fa-check-circle]="!f['password'].hasError('minlength')">
+                                                                        <span>Must have at least 8 characters!</span>
+                                                                    </i>
+                                                                </p>
+                
+                                                                <p class="alert-mes">
+                                                                    <i class="fa"
+                                                                        [class.fa-times-circle]="f['password'].hasError('hasCapitalCase')"
+                                                                        [class.green-color]="!f['password'].hasError('hasCapitalCase')"
+                                                                        [class.fa-check-circle]="!f['password'].hasError('hasCapitalCase')">
+                                                                        <span>Must contain at least 1 in Capital Case!</span>
+                                                                    </i>
+                                                                </p>
+                
+                                                                <p class="alert-mes">
+                                                                    <i class="fa"
+                                                                        [class.fa-times-circle]="f['password'].hasError('hasSmallCase')"
+                                                                        [class.green-color]="!f['password'].hasError('hasSmallCase')"
+                                                                        [class.fa-check-circle]="!f['password'].hasError('hasSmallCase')">
+                                                                        <span>Must contain at least 1 Letter in Small Case!</span>
+                                                                    </i>
+                                                                </p>
+                
+                                                                <p class="alert-mes">
+                                                                    <i class="fa"
+                                                                        [class.fa-times-circle]="f['password'].hasError('hasNumber')"
+                                                                        [class.green-color]="!f['password'].hasError('hasNumber')"
+                                                                        [class.fa-check-circle]="!f['password'].hasError('hasNumber')">
+                                                                        <span>Must contain at least 1 number!</span>
+                                                                    </i>
+                                                                </p>
+                
+                                                                <p class="alert-mes">
+                                                                    <i class="fa"
+                                                                        [class.fa-times-circle]="f['password'].hasError('hasSpecialCharacters')"
+                                                                        [class.green-color]="!f['password'].hasError('hasSpecialCharacters')"
+                                                                        [class.fa-check-circle]="!f['password'].hasError('hasSpecialCharacters')">
+                                                                        <span>Must contain at least 1 Special Character!</span>
+                                                                    </i>
+                                                                </p>
+                                                            </div>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>                                            
+                                            
+                                            <div class="col-lg-6">
+                                                <div class="common_mar_bottom form-group">
+                                                    <label class="label-1">Confirm Password</label>
+                                                    <div class="eye-real">
+                                                        <input class="input-dt form-control" type="text"
+                                                            placeholder="confirm password"
+                                                            [type]="show1 ? 'text' : 'password'" formControlName="passwordConfirm"
+                                                            [ngClass]="{ 'is-invalid': submitted && f['passwordConfirm'].errors }"
+                                                            (keyup)="onEnter()" required>
+                                                        <i [className]="show1 ? 'fas fa-eye right-eye' : 'fas fa-eye-slash right-eye'"
+                                                            (click)="password1()"></i>
+                                                        <div *ngIf="submitted && f['passwordConfirm'].errors" class="invalid-feedback">
+                                                            <span class="for-sub-name" *ngIf="f['passwordConfirm'].errors['required']">
+                                                                Confirm Password is required.
+                                                            </span>
+                                                            <span class="for-sub-name"
+                                                                *ngIf="!f['passwordConfirm'].errors['required'] && f['passwordConfirm'].errors['matchOther']">
+                                                                Confirm Password Must Match
+                                                            </span>                
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-lg-12">
+                                                <div class="common_mar_bottom form-group">
+                                                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"
+                                                        [checked]="checked" formControlName="chk1">
+                                                    <label for="" class="label-2">Remember me</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="common_mar_bottom_0">
+                                                    <!-- <button class="Next_bt BT-shadow" (click)="register(registerForm.value)" [disabled]="isBtnDisabled" type="submit">Next <i class="fas fa-angle-right"></i></button> -->
+                                                    <!-- <button class="Next_bt BT-shadow" (click)="nextTab()" [disabled]="isBtnDisabled" type="submit">Next <i class="fas fa-angle-right"></i></button>                                                -->
+                                                    <button type="submit" class="btn btn-primary"(click)="nextTab()" [disabled]="isBtnDisabled">
+                                                        save
+                                                        <span *ngIf="isBtnDisabled" class="spinner-border spinner-border-sm" role="status"
+                                                            aria-hidden="true"></span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </form>
+                                        </div>
+                                    </div>
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="verify-email" *ngIf="isRegistered">
+        <section class="verify-email" >
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="v-e-left">
+                        <img class="v-e-i" src="assets/images/left-image-1.png" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="v-e-right">
+                        <div class="flex-center">
+                            <p class="v-f-e-pp">Verify your email ✉️</p>
+                            <p class="v-f-e-pp-1">Account activation link sent to your email address: <strong> {{registerForm.get('email')?.value}}</strong> Please follow the link inside to continue.</p>
+                            <button class="Login__b BT-shadow"[routerLink]="['/login']">Login</button>
+                            <p class="v-f-e-pp-2">Didn't receive an email? <a [attr.disabled]="isSending" href="javascript:void(0)">Resend  <i class="fa fa-spinner fa-pulse fa-3x fa-fw" style=" font-size: 22px; "
+                                *ngIf="isSending"></i></a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

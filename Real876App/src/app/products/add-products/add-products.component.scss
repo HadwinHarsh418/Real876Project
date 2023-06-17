@@ -1,0 +1,37 @@
+.has-error{
+    input {
+        border: 1px solid #f00606!important;
+    }
+}
+.has-error{
+    span{
+        color: red;
+    }
+}
+.set_modal{
+    padding: 30px;
+}
+.input-ul-2 {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+.input-ul-2 li label {
+    display: block;
+    font-family: Poppins;
+    margin: 0 0 0px 4px;
+    color: #5a607f;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+}
+.input-ul-2 li {
+    display: flex;
+    align-items: center;
+    margin: 0 15px 0 0;
+}
+.margin-bottom-chart label.label-chart {
+    font-weight: 600;
+}

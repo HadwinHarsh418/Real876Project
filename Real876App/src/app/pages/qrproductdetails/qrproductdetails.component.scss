@@ -1,0 +1,25 @@
+.table-c table thead tr th {
+    background: rgba(121, 169, 197, 0.92) !important;
+    padding: 10px 15px;
+    color: #fff;
+    font-size: 14px;
+}
+
+.table-c table {
+    width: 100%;
+}
+
+.table-c tbody tr td {
+    padding: 12px 15px;
+    color: #000;
+    font-size: 14px;
+    background: #f3f8fa;
+}
+
+.table-c {
+    overflow: auto;
+}
+
+.table-c table {
+    min-width: 400px;
+}

@@ -1,0 +1,92 @@
+<div class="chart-under">
+    <span class="label-chart" for=""><b>{{getUserData ? 'Edit':'Add'}} Product</b></span>
+</div>
+<form [formGroup]="UserForm" (ngSubmit)="onSubmit()">
+    <div class="row chart-under">
+        <div class="col-lg-4">
+            <div class="margin-bottom-chart"
+                [ngClass]="{'has-error' : getForm.first_name.hasError('required') && getForm.first_name.dirty}">
+                <label class="label-chart" for="">First Name<span class="text-danger">*</span></label>
+                <input type="text" class="input-chart form-control" formControlName="first_name"
+                    [ngClass]="{'has-error-field' : getForm.first_name.hasError('required') && getForm.first_name}">
+                <span class="help-block"
+                    *ngIf="{'has-error' : getForm.first_name.hasError('required') && getForm.first_name.dirty}">
+                    <span *ngIf="getForm.first_name.dirty && getForm.first_name.hasError('required')">
+                        First Name required
+                    </span>
+                </span>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="margin-bottom-chart"
+                [ngClass]="{'has-error' : getForm.last_name.hasError('required') && getForm.last_name.dirty}">
+                <label class="label-chart" for="">Last Name<span class="text-danger">*</span></label>
+                <input type="text" class="input-chart form-control" formControlName="last_name"
+                    [ngClass]="{'has-error-field' : getForm.last_name.hasError('required') && getForm.last_name}">
+                <span class="help-block"
+                    *ngIf="{'has-error' : getForm.last_name.hasError('required') && getForm.last_name.dirty}">
+                    <span *ngIf="getForm.last_name.dirty && getForm.last_name.hasError('required')">
+                        Last Name required
+                    </span>
+                </span>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="margin-bottom-chart"
+                [ngClass]="{'has-error' : getForm.username.hasError('required') && getForm.username.dirty}">
+                <label class="label-chart" for="">User Name<span class="text-danger">*</span></label>
+                <input type="text" class="input-chart form-control" formControlName="username"
+                    [ngClass]="{'has-error-field' : getForm.username.hasError('required') && getForm.username}">
+                    <span class="help-block"
+                    *ngIf="{'has-error' : getForm.username.hasError('required') && getForm.username.dirty}">
+                    <span *ngIf="getForm.username.dirty && getForm.username.hasError('required')">
+                        User Name required
+                    </span>
+                </span>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="margin-bottom-chart"
+                [ngClass]="{'has-error' : getForm.email.hasError('required') && getForm.email.dirty}">
+                <label class="label-chart" for="">Email<span class="text-danger">*</span></label>
+                <input type="text" class="input-chart form-control" formControlName="email"
+                    [ngClass]="{'has-error-field' : getForm.email.hasError('required') && getForm.email}">
+                <span class="help-block"
+                    *ngIf="{'has-error' : getForm.email.hasError('required') && getForm.email.dirty}">
+                    <span *ngIf="getForm.email.dirty && getForm.email.hasError('required')">
+                        Email required
+                    </span>
+                </span>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="margin-bottom-chart"
+                [ngClass]="{'has-error' : getForm.phone.hasError('required') && getForm.phone.dirty}">
+                <label class="label-chart" for="">Phone Number<span class="text-danger">*</span></label>
+                <input type="number" class="input-chart form-control" formControlName="phone">
+                <span class="help-block"
+                    *ngIf="{'has-error' : getForm.phone.hasError('required') && getForm.phone.dirty}">
+                    <span *ngIf="getForm.phone.dirty && getForm.phone.hasError('required')">
+                        Phone Number required
+                    </span>
+                </span>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="margin-bottom-chart"
+                [ngClass]="{'has-error' : getForm.address.hasError('required') && getForm.address.dirty}">
+                <label class="label-chart" for="">Address<span class="text-danger">*</span></label>
+                <input type="text" class="input-chart form-control" formControlName="address">
+                <span class="help-block"
+                *ngIf="{'has-error' : getForm.address.hasError('required') && getForm.address.dirty}">
+                    <span class="text-danger" *ngIf="getForm.address.dirty && getForm.address.hasError('required')">
+                        Address required </span>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="close-right chart-under">
+        <button type="button" class="btn-chart btn btn-danger" (click)="cancel()">Cancel</button>
+        <button type="submit" class="btn-chart btn btn-primary">{{getUserData ? 'Update':'Save'}}</button>
+    </div>
+</form>

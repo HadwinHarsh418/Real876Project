@@ -1,0 +1,136 @@
+<div class="app-content content">
+    <div class="close-right justify-content-end chart-under">
+        <button type="submit" class="btn-chart btn btn-primary" (click)="open()">Add Product</button>
+    </div>
+    <div class="d-flex justify-content-between my-2">
+        <div class="fileChange">
+            <input #fileInput [disabled]="Loading" type="file" id="file" (change)="handleFileInput($event)"
+                accept=".xlsx, .xls, .csv">
+        </div>
+        <div class="">
+            <a [download]="myFileName" [href]="fileUrl">
+                <h5 style="color: #8d83f2 ; font-weight: bold; text-decoration: underline ; ">Download Example File For
+                    Bulk Upload</h5>
+            </a>
+        </div>
+    </div>
+    <div>
+        <i class="fa fa-spinner fa-spin loader" style="font-size: 50px;display: flex;justify-content: center;"
+            *ngIf="Loading"></i>
+    </div>
+    <div class="card-body">
+        <div class="d-flex my-2">
+            <div class="col-md-4">
+                <input (keyup)="updateFilter($event)" type="text" class="form-control" placeholder="Search" />
+            </div>
+            <div class="col-md-8 d-flex justify-content-end">
+                <button class="btn-chart btn btn-success" *ngIf="selected.length" (click)="convertToPNG()">Download
+                    QrCode in PNG</button>
+            </div>
+        </div>
+        <ngx-datatable name="good" cellClass="overflow-visible" class="bootstrap core-bootstrap sz-1000" [rows]="rows"
+            [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'" [externalPaging]="false"
+            [count]="rows.length" [limit]="10" [scrollbarV]="false" [selected]="selected"
+            (select)="onSelect($event,selectIdCheck)" [selectionType]="selectionType" [selectAllRowsOnPage]="false"
+            [displayCheck]="displayCheck" [scrollbarH]="true">
+            <ngx-datatable-column [width]="30" [sortable]="false" [canAutoResize]="false" [draggable]="false"
+                [resizeable]="false">
+                <ng-template ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected"
+                    let-selectFn="selectFn">
+                    <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)" />
+                </ng-template>
+                <ng-template let-InsuranceType="value" let-row="row" let-expanded="expanded"
+                    ngx-datatable-cell-template>
+                    <input type="checkbox" name="{{row.product_name}}" id="{{row.product_id}}"
+                        (change)="changeValue($event,row)" value="{{row.isSelected}}" [(ngModel)]="row.isSelected"
+                        [checked]="InsuranceType">
+                </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="Product Name" prop="product_name" [width]="250"></ngx-datatable-column>
+            <ngx-datatable-column name="Product Description" prop="product_description"
+                [width]="250"></ngx-datatable-column>
+            <ngx-datatable-column name="Recyclable" prop="recyclable" [width]="250"></ngx-datatable-column>
+            <ngx-datatable-column name="Ingredients" prop="ingredients" [width]="250"></ngx-datatable-column>
+            <ngx-datatable-column name="Authorized Distributers" prop="authorized_distributers"
+                [width]="250"></ngx-datatable-column>
+            <ngx-datatable-column name="Interesting Recipes" prop="interesting_recipes"
+                [width]="250"></ngx-datatable-column>
+            <ngx-datatable-column name="Product Warning" prop="product_warning" [width]="250"></ngx-datatable-column>
+            <ngx-datatable-column name="Health Warning" prop="health_warning" [width]="250"></ngx-datatable-column>
+            <ngx-datatable-column name="Nutri Score" prop="nutri_score" [width]="250"></ngx-datatable-column>
+            <ngx-datatable-column name="Manufacturer" prop="manufacturer" [width]="250"></ngx-datatable-column>
+            <ngx-datatable-column name="Contact Us" prop="contact_us" [width]="250"></ngx-datatable-column>
+            <ngx-datatable-column name="About Company" prop="about_the_company" [width]="250"></ngx-datatable-column>
+            <ngx-datatable-column name="Manufactured Date" prop="manufactured_date"
+                [width]="250"></ngx-datatable-column>
+            <ngx-datatable-column name="Expiry Date " prop="expiry_date" [width]="250"></ngx-datatable-column>
+            <ngx-datatable-column name="Action">
+                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                    <i class="fa fa-edit mr-2" style=" font-size: 17px; " (click)="editProduct(row)"></i>
+                    <i class="fa fa-qrcode mr-2" style=" font-size: 17px; " (click)="openQrModal('content',row)"></i>
+                    <i class="fa fa-trash mr-2" style=" font-size: 17px; "
+                        (click)="openQrModal('confirmation',row)"></i>
+                </ng-template>
+            </ngx-datatable-column>
+            <!-- <ngx-datatable-column name="Action" [sortable]="false" prop="id">
+                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                  <div class="d-flex align-items-center">
+                    <div ngbDropdown container="body">
+                        <div><a class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user" href="javascript:void(0);" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-ellipsis-v"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-user">
+                            <a href="javascript:void(0)" class="dropdown-item d-flex align-items-center mb-1" (click)="editProduct(row)">
+                                <i class="fa fa-edit mr-2" (click)="editProduct(row)">Edit</i>
+                           </a>
+                            <a href="javascript:void(0)" class="dropdown-item d-flex align-items-center mb-1" (click)="openQrModal('content',row)">
+                                <i class="fa fa-qrcode mr-2" >Qr Code</i>
+                           </a>
+                            <a href="javascript:void(0)" class="dropdown-item d-flex align-items-center" (click)="openQrModal('confirmation',row)">
+                                <i class="fa fa-trash mr-2" >Delete</i>
+                           </a>
+                           </div>
+                      </div>
+                    </div>
+                  </div>
+                </ng-template>
+              </ngx-datatable-column> -->
+        </ngx-datatable>
+    </div>
+</div>
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Qr Code</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body text-center">
+        <div class="row">
+            <div class="col-12">
+                <div class="d-flex align-items-center">
+                    <p class="card-text fw-bold font-small-2 mr-25 mb-0">Product Name:</p>
+                    <p class="card-text font-small-2 mr-25 mb-0">{{qrcode.product_name}}</p>
+                </div>
+                <div class="d-flex align-items-center">
+                    <p class="card-text fw-bold font-small-2 mr-25 mb-0">Product Description:</p>
+                    <p class="card-text font-small-2 mr-25 mb-0">{{qrcode.product_description}}</p>
+                </div>
+            </div>
+        </div>
+        <img src="{{qrcode.qr_code}}" alt="Qr code not Available" width="200" height="200">
+    </div>
+</ng-template>
+<ng-template #confirmatipnPopup let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Confirmation</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <h2 class="card-text font-small-4 mr-25 mb-2">Are you sure you want to delete the product
+            `{{qrcode.product_name}}`?</h2>
+        <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-danger mr-1" (click)="modal.dismiss('Cross click')">No</button>
+            <button type="button" class="btn btn-success" (click)="deleteProduct()">Yes</button>
+        </div>
+    </div>
+</ng-template>

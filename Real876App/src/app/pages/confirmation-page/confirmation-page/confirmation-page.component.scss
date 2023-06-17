@@ -1,0 +1,36 @@
+body{
+    
+    margin-top:20px;
+}
+
+
+.card-box .card-drop {
+  color: #9a9da0;
+  font-size: 20px;
+  line-height: 1px;
+  padding: 0px 5px;
+  display: inline-block;
+}
+// .text-success {
+//      !important;
+// }
+.text-muted {
+    color: #9a9da0 !important;
+}
+// .logo-alt-box .logo {
+    
+//      !important;
+    
+.cards{
+  margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}  
+    
+// }
+// .logo-alt-box h5 {
+    
+// }

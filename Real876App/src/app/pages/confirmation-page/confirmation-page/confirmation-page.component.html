@@ -1,0 +1,43 @@
+<section class="login-house">
+  <div class="container-fluid">
+        <div class="col-md-8 cards">
+          <div class="container my-auto py-5">
+            <div class="row">
+              <div class="col-10 col-lg-9 col-xl-8 mx-auto">
+                <div class="m-t-30 card-box" style="margin-bottom: 20px;background-clip: padding-box;-moz-border-radius: 5px;border-radius: 5px;-webkit-border-radius: 5px;padding: 20px;background-color: #ffffff;box-shadow: 0 8px 42px 0 rgba(0, 0, 0, 0.08);">
+                  <div class="text-center">
+                      <h4 class="text-uppercase font-bold m-b-0">{{ checkingCode ? 'Please wait!!' : status == 1 ? 'Success !!' : 'Error !!' }}</h4>
+                  </div>
+                  <div class="panel-body text-center">
+                      <div *ngIf="checkingCode">
+                          <i class="fa fa-spinner fa-spin fa-3x" ></i>
+                          <p class="text-muted font-13 m-t-20" style="color: #9a9da0"> 
+                             Please wait! While we are checking your details!
+                          </p>
+                      </div>
+  
+                      <div *ngIf="!checkingCode && status == 2">
+                          <i class="fa fa-times-circle fa-3x text-danger" ></i>
+                          <p class="text-muted font-13 m-t-20" style="color: #9a9da0"> 
+                              Oops! Seems like your are using an invalid link.
+                          </p>
+                      </div>
+  
+                      <div *ngIf="!checkingCode && status == 1">
+                          <i class="fa fa-check-circle fa-3x text-success" ></i>
+                          <p class="text-muted font-13 m-t-20" style="color: #9a9da0"> 
+                              Congratulations! .Your account is verified. Please login your account to continue further.
+                          </p>
+                          <div class="d-grid my-4">
+                            <button class="btn btn-primary" routerLink="/login">Login</button>
+                        </div>
+                      </div>
+  
+                  </div>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</section>

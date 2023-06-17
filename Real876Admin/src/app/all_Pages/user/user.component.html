@@ -1,0 +1,44 @@
+<div class="close-right justify-content-end chart-under">
+    <button type="submit" class="btn-chart btn btn-primary" routerLink="/users/profile">Add User</button>
+</div>
+<ngx-datatable #tablesss class="bootstrap core-bootstrap sz-1000" [rows]="rows" [columnMode]="'force'"
+            [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'" [externalPaging]="false" [rowClass]="getRowClass"
+            [count]="" [offset]="" [limit]="10" [scrollbarH]='true' [scrollbarV]="false"  style="min-height: 400px;">
+    <ngx-datatable-column name="First Name" prop="first_name"></ngx-datatable-column>
+    <ngx-datatable-column name="Last Name" prop="last_name"></ngx-datatable-column>
+    <ngx-datatable-column name="User Name" prop="username"></ngx-datatable-column>
+    <ngx-datatable-column name="Email" prop="email" [width]="250"></ngx-datatable-column>
+    <ngx-datatable-column name="Phone" prop="phone"></ngx-datatable-column>
+    <ngx-datatable-column name="Organization" prop="address"></ngx-datatable-column>
+    <ngx-datatable-column name="Created At" prop="created_at">
+        <ng-template let-created_at="value" let-expanded="expanded" 
+            ngx-datatable-cell-template>
+            {{ created_at | date: 'mediumDate'}}
+        </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Action" sortable="false" prop="id">
+        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+            <div class="d-flex align-items-center">
+                <div ngbDropdown container="body">
+                    <a ngbDropdownToggle href="javascript:void(0);" class="hide-arrow" id="dropdownBrowserState"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i data-feather="more-vertical" class="text-primary cursor-pointer mr-50"></i>
+                    </a>
+                    <div ngbDropdownMenu class="dropdown-menu-right" aria-labelledby="dropdownBrowserState">
+                        <a href="javascript:void(0)" ngbDropdownItem class="d-flex align-items-center"
+                             [routerLink]="['/users/profile',row.user_id]">
+                             <i class="fa fa-edit mr-1" aria-hidden="true"></i>Edit
+                        </a>
+                        <a href="javascript:void(0)" ngbDropdownItem class="d-flex align-items-center" (click)="userInactive(row)">
+                             <i class="fa fa-ban  mr-1" aria-hidden="true"></i>{{row.is_login_access == 0 ? 'Unblock':'Block'}}
+                        </a>
+                        <a href="javascript:void(0)" ngbDropdownItem class="d-flex align-items-center"
+                            (click)="deleteProduct(row)">
+                            <i class="fa fa-trash  mr-1" aria-hidden="true"></i>Delete
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </ngx-datatable-column>
+</ngx-datatable>

@@ -1,0 +1,149 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import '~@swimlane/ngx-datatable/index.css';
+@import '~@swimlane/ngx-datatable/themes/material.scss';
+@import '~@swimlane/ngx-datatable/assets/icons.css';
+
+.invalid-feedback.block {
+    display: block!important;
+    padding-left: 0;
+    margin-bottom: 20px;
+    margin-top: 0!important;
+}
+
+.invalid-feedback .green-color {
+    color: green;
+}
+.lang-dropdown a.dropdown-item {
+    padding: 0 !important;
+    margin: 0 !important;
+    line-height: 35px;
+}
+
+
+.lang-dropdown .dropdown-menu.show {
+    padding: 10px 0 10px 0 !important;
+    margin-top: 0px !important;
+}
+app-language .dropdown-menu {
+    border-radius: 0.358rem;
+    transform: inherit !important;
+    box-shadow: 0 5px 25px rgb(34 41 47 / 10%);
+}
+.trans-2 {
+    max-width: 407px;
+    margin: auto !important;
+    float: none;
+    width: 100%;
+    margin-right: auto !important;
+}
+
+.div-lang {
+    margin-right: 0 !important;
+    margin-bottom: 10px;
+}
+html .dark-layout .ngx-datatable.bootstrap.core-bootstrap .datatable-footer .datatable-pager a:hover{
+    color: #fff !important;
+}
+.ngx-datatable.bootstrap .datatable-body .empty-row {
+	text-align: center;
+}
+html .dark-layout .ngx-datatable.bootstrap.core-bootstrap .datatable-footer .datatable-pager ul li:not(.disabled):hover a {
+    background-color: transparent !important;
+    color: #ffffff !important;
+}
+.ngx-datatable.bootstrap.core-bootstrap .datatable-header {
+    background-color: #f3f2f7;
+    text-transform: uppercase;
+    height: 40px!important;
+    border-top: 1px solid #ebe9f1;
+}
+.ngx-datatable.bootstrap {
+    box-shadow: none;
+    font-size: 13px;
+}
+.ngx-datatable.fixed-header .datatable-header .datatable-header-inner {
+    white-space: nowrap;
+}
+.ngx-datatable.bootstrap .datatable-header .datatable-header-cell .datatable-header-cell-label {
+    line-height: 24px;
+}
+.ngx-datatable.bootstrap.core-bootstrap .datatable-header .datatable-header-cell {
+    border-bottom: 0;
+    padding: 0.75rem 1rem;
+    font-weight: 700;
+    font-size: .8rem;
+}
+.ngx-datatable .datatable-body .datatable-body-row>div {
+    display: flex;
+}
+.ngx-datatable *, .ngx-datatable :after, .ngx-datatable :before {
+    box-sizing: border-box;
+}
+html body {
+    height: 100%;
+    background-color: #f8f8f8;
+    direction: ltr;
+}
+.ngx-datatable .datatable-body-cell, .ngx-datatable .datatable-header-cell {
+    overflow-x: hidden;
+    vertical-align: top;
+    display: inline-block;
+    line-height: 1.625;
+    padding: 10px 15px;
+}
+.ngx-datatable.bootstrap .datatable-body .datatable-body-row {
+    vertical-align: top;
+    border-top: 1px solid #d1d4d7;
+}
+.ngx-datatable.bootstrap.core-bootstrap .datatable-body-row {
+    border-color: #ebe9f1;
+}
+// .modal-backdrop.fade {
+//     opacity: 0 !important;
+// }
+.modal-backdrop.your-backdrop-class {
+    z-index: 1060!important;
+  }
+body {
+    margin: 0;
+    font-family: Montserrat,Helvetica,Arial,serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.45;
+    color: #6e6b7b;
+    text-align: left;
+    background-color: #f8f8f8;
+}
+@media(max-width:991px) {
+    
+    ngx-datatable.ngx-datatable {
+        &.sz-500 {
+            min-width: 500px;
+        }
+        &.sz-600 {
+            min-width: 600px;
+        }
+        &.sz-700 {
+            min-width: 700px;
+        }
+        &.sz-800 {
+            min-width: 800px;
+        }
+        &.sz-900 {
+            min-width: 900px;
+        }
+        &.sz-1000 {
+            min-width: 1000px;
+        }
+        div.visible {
+            width: 100%;
+        }
+    }
+    
+}
+.close-right {
+    display: flex;
+    justify-content: space-between;
+}
+

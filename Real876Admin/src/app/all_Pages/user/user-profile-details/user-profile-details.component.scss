@@ -1,0 +1,13 @@
+.has-error{
+    input {
+        border: 1px solid #f00606!important;
+    }
+}
+.has-error{
+    span{
+        color: red;
+    }
+}
+input[type=text], input[type=email], input[type=password], button.btn.btn-primary.btn-block.waves-effect.waves-float.waves-light {
+    height: 29px !important;
+}

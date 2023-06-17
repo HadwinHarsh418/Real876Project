@@ -1,0 +1,62 @@
+.dashboard {
+  text-align: center;
+  padding: 12px;
+  font-size: 26px;
+  font-weight: 500;
+}
+
+.btn {
+  background: #e04747;
+  color: #fff;
+  font-size: 18px;
+  padding: 1px 11px;
+}
+
+.img-popup-modal .modal-dialog.modal-lg.modal-dialog-centered {
+  margin-top: 80px;
+}
+
+.close-popup {
+  position: absolute;
+  top: -11px!important;
+  right: -14px!important;
+  color: #fff!important;
+  height: 25px;
+  width: 25px;
+  opacity: 1;
+  background: #108bc7;
+  font-family: none;
+  border-radius: 56px;
+  line-height: 23px;
+  font-size: 18px!important;
+  text-align: center;
+  transition: transform 1s;
+  -webkit-transition: transform .6s;
+  -moz-transition: transform .6s;
+  -ms-transition: transform .6s;
+  -o-transition: transform .6s;
+  padding: 0!important;
+  z-index: 999!important;
+}
+
+/* span.eurofi {
+  font-size: 14px;
+  font-weight: 500;
+} */
+
+.nomoreDwnlds {
+  text-align: center;
+  width: 100%;
+  font-weight: 500;
+}
+.footer {
+  margin-left: 260px;
+}
+footer.footer {
+  padding: 0.8rem 2rem;
+  min-height: 3.35rem;
+  transition: all .3s ease;
+}
+.avatar-content i.fas.fa-box {
+  font-size: 18px;
+}

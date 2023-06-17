@@ -1,0 +1,47 @@
+div input {
+  margin-right: 100px;
+}
+
+.check-btn label {
+  display: inline-block;
+}
+
+.check-btn input {
+  display: none;
+}
+
+.clicker {
+  padding: 5px 10px;
+}
+
+.hiddendiv {
+  width: 100px;
+  height: 100px;
+  display: none;
+}
+
+.check-btn input:checked ~ .hiddendiv {
+  display: block;
+}
+.hiddendiv {
+  background: linear-gradient(118deg, #edecf1, rgba(236, 236, 238, 0.7));
+  box-shadow: 0 0 10px 1px rgba(161, 161, 222, 0.7);
+  color: #151212;
+  font-weight: 400;
+  border-radius: 4px;
+  height: 54px !important;
+}
+.hiddendiv a {
+  display: block;
+  padding: 3px 15px;
+  color: #181515;
+  border-radius: 4px;
+  font-size: 13px;
+}
+.hiddendiv a:hover {
+  background: rgba(115, 103, 240, 0.7);
+  color: #fef9f9;
+}
+label.clicker {
+  cursor: pointer;
+}

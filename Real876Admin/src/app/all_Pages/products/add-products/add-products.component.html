@@ -1,0 +1,375 @@
+<div class="chart-under">
+    <span class="label-chart" for=""><b>{{getProductItem ? 'Edit':'Add'}} Product</b></span>
+</div>
+<form [formGroup]="ProductForm" (ngSubmit)="onSubmit()">
+    <div class="row chart-under">
+        <div class="col-lg-4 my-1">
+            <div class="margin-bottom-chart"
+                [ngClass]="{'has-error' : getForm.product_name.hasError('required') && getForm.product_name.dirty}">
+                <label class="label-chart" for="">Product Name</label>
+                <ul class="input-ul-2 my-1">
+                    <li>
+                        <input type="radio" name="product_name_check"
+                            formControlName="product_name_check" id="product_name_check" value="Yes" (change)="validators('Yes','product_name')">
+                        <label>Yes </label>
+                    </li>
+                    <li>
+                        <input type="radio" name="product_name_check"
+                            formControlName="product_name_check" id="product_name_check" value="No" (change)="validators('No','product_name')">
+                        <label>No</label>
+                    </li>
+                </ul>
+                <input type="text" class="input-chart form-control" formControlName="product_name"
+                    [ngClass]="{'has-error-field' : getForm.product_name.hasError('required') && getForm.product_name}">
+                <span class="help-block"
+                    *ngIf="{'has-error' : getForm.product_name.hasError('required') && getForm.product_name.dirty}">
+                    <span *ngIf="getForm.product_name.dirty && getForm.product_name.hasError('required')">
+                        Product Name required
+                    </span>
+                </span>
+            </div>
+        </div>
+        <div class="col-lg-4 my-1">
+            <div class="margin-bottom-chart"
+                [ngClass]="{'has-error' : getForm.product_description.hasError('required') && getForm.product_description.dirty}">
+                <label class="label-chart" for="">Product Description</label>
+                <ul class="input-ul-2 my-1">
+                    <li>
+                        <input type="radio" name="product_description_check"
+                            formControlName="product_description_check" id="product_description_check" value="Yes" (change)="validators('Yes','product_description')">
+                        <label>Yes </label>
+                    </li>
+                    <li>
+                        <input type="radio" name="product_description_check"
+                            formControlName="product_description_check" id="product_description_check" value="No" (change)="validators('No','product_description')">
+                        <label>No</label>
+                    </li>
+                </ul>
+                <input type="text" class="input-chart form-control" formControlName="product_description"
+                    [ngClass]="{'has-error-field' : getForm.product_description.hasError('required') && getForm.product_description}">
+                <span class="help-block"
+                    *ngIf="{'has-error' : getForm.product_description.hasError('required') && getForm.product_description.dirty}">
+                    <span *ngIf="getForm.product_description.dirty && getForm.product_description.hasError('required')">
+                        Product Description required
+                    </span>
+                </span>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="margin-bottom-chart"
+                [ngClass]="{'has-error' : getForm.ingredients.hasError('required') && getForm.ingredients.dirty}">
+                <label class="label-chart" for="">Ingredients</label>
+                <ul class="input-ul-2 my-1">
+                    <li>
+                        <input type="radio" name="ingredients_check" (change)="validators('Yes','ingredients')" 
+                            formControlName="ingredients_check" id="ingredients_check" value="Yes">
+                        <label>Yes</label>
+                    </li>
+                    <li>
+                        <input type="radio" name="ingredients_check" (change)="validators('No','ingredients')" 
+                            formControlName="ingredients_check" id="ingredients_check" value="No">
+                        <label>No</label>
+                    </li>
+                </ul>
+                <input type="text" class="input-chart form-control" formControlName="ingredients"
+                    [ngClass]="{'has-error-field' : getForm.ingredients.hasError('required') && getForm.ingredients}">
+                    <span class="help-block"
+                    *ngIf="{'has-error' : getForm.ingredients.hasError('required') && getForm.ingredients.dirty}">
+                    <span *ngIf="getForm.ingredients.dirty && getForm.ingredients.hasError('required')">
+                        Ingredients required
+                    </span>
+                </span>
+            </div>
+        </div>
+        <div class="col-lg-4 my-1">
+            <div class="margin-bottom-chart"
+                [ngClass]="{'has-error' : getForm.manufacturer.hasError('required') && getForm.manufacturer.dirty}">
+                <label class="label-chart" for="">Manufacturer</label>
+                <ul class="input-ul-2 my-1">
+                    <li>
+                        <input type="radio" name="manufacturer_check"
+                            formControlName="manufacturer_check" id="manufacturer_check" value="Yes" (change)="validators('Yes','manufacturer')">
+                        <label>Yes </label>
+                    </li>
+                    <li>
+                        <input type="radio" name="manufacturer_check"
+                            formControlName="manufacturer_check" id="manufacturer_check" value="No" (change)="validators('No','manufacturer')">
+                        <label>No</label>
+                    </li>
+                </ul>
+                <input type="text" class="input-chart form-control" formControlName="manufacturer"
+                    [ngClass]="{'has-error-field' : getForm.manufacturer.hasError('required') && getForm.manufacturer}">
+                <span class="help-block"
+                    *ngIf="{'has-error' : getForm.manufacturer.hasError('required') && getForm.manufacturer.dirty}">
+                    <span *ngIf="getForm.manufacturer.dirty && getForm.manufacturer.hasError('required')">
+                        manufacturer required
+                    </span>
+                </span>
+            </div>
+        </div>
+        <div class="col-lg-4 my-1">
+            <div class="margin-bottom-chart"
+                [ngClass]="{'has-error' : getForm.manufactured_date.hasError('required') && getForm.manufactured_date.dirty}">
+                <label class="label-chart" for="">Manufactured Date (MFG)</label>
+                <ul class="input-ul-2 my-1">
+                    <li>
+                        <input type="radio" name="manufactured_date_check"
+                            formControlName="manufactured_date_check" id="manufactured_date_check" value="Yes" (change)="validators('Yes','manufactured_date')">
+                        <label>Yes </label>
+                    </li>
+                    <li>
+                        <input type="radio" name="manufactured_date_check"
+                            formControlName="manufactured_date_check" id="manufactured_date_check" value="No" (change)="validators('No','manufactured_date')">
+                        <label>No</label>
+                    </li>
+                </ul>
+                <input type="date" max="9999-12-31" class="input-chart form-control" formControlName="manufactured_date">
+                <span class="help-block"
+                    *ngIf="{'has-error' : getForm.manufactured_date.hasError('required') && getForm.manufactured_date.dirty}">
+                    <span *ngIf="getForm.manufactured_date.dirty && getForm.manufactured_date.hasError('required')">
+                        Manufactured Date (MFG) required
+                    </span>
+                </span>
+            </div>
+        </div>
+        <div class="col-lg-4 my-1">
+            <div class="margin-bottom-chart"
+                [ngClass]="{'has-error' : getForm.expiry_date.hasError('required') && getForm.expiry_date.dirty}">
+                <label class="label-chart" for="">Expiry Date (EXP)</label>
+                <ul class="input-ul-2 my-1">
+                    <li>
+                        <input type="radio" name="expiry_date_check"
+                            formControlName="expiry_date_check" id="expiry_date_check" value="Yes" (change)="validators('Yes','expiry_date')">
+                        <label>Yes </label>
+                    </li>
+                    <li>
+                        <input type="radio" name="expiry_date_check"
+                            formControlName="expiry_date_check" id="expiry_date_check" value="No" (change)="validators('No','expiry_date')">
+                        <label>No</label>
+                    </li>
+                </ul>
+                <input type="date" max="9999-12-31" class="input-chart form-control" formControlName="expiry_date">
+                <span class="help-block"
+                *ngIf="{'has-error' : getForm.expiry_date.hasError('required') && getForm.manufacturer.dirty}">
+                    <span class="text-danger" *ngIf="getForm.expiry_date.dirty && getForm.expiry_date.hasError('required')">
+                        Expiry Date required </span>
+                </span>
+            </div>
+        </div>
+        <div class="col-lg-4 my-1">
+            <div class="margin-bottom-chart"
+                [ngClass]="{'has-error' : getForm.recyclable.hasError('required') && getForm.recyclable.dirty}">
+                <label class="label-chart" for="">recyclable</label>
+                <ul class="input-ul-2 my-1">
+                    <li>
+                        <input type="radio" name="recyclable_check"
+                            formControlName="recyclable_check" id="recyclable_check" value="Yes" (change)="validators('Yes','recyclable')">
+                        <label>Yes </label>
+                    </li>
+                    <li>
+                        <input type="radio" name="recyclable_check"
+                            formControlName="recyclable_check" id="recyclable_check" value="No" (change)="validators('No','recyclable')">
+                        <label>No</label>
+                    </li>
+                </ul>
+                <input type="text" class="input-chart form-control" formControlName="recyclable"
+                    [ngClass]="{'has-error-field' : getForm.recyclable.hasError('required') && getForm.recyclable}">
+                <!-- <input type="text" class="input-chart form-control" formControlName="recyclable"
+                [ngClass]="{'has-error-field' : getForm.recyclable..hasError('required') && getForm.recyclable.dirty}"> -->
+                <span class="help-block"
+                    *ngIf="{'has-error' : getForm.recyclable.hasError('required') && getForm.recyclable.dirty}">
+                    <span *ngIf="getForm.recyclable.dirty && getForm.recyclable.hasError('required')">
+                        Recyclable required
+                    </span>
+                </span>
+            </div>
+        </div>
+        <div class="col-lg-4 my-1">
+            <div class="margin-bottom-chart"
+                [ngClass]="{'has-error' : getForm.authorized_distributers.hasError('required') && getForm.authorized_distributers.dirty}">
+                <label class="label-chart" for="">Authorized Distributors</label>
+                <ul class="input-ul-2 my-1">
+                    <li>
+                        <input type="radio" name="authorized_distributers_check"
+                            formControlName="authorized_distributers_check" id="authorized_distributers_check" value="Yes" (change)="validators('Yes','authorized_distributers')">
+                        <label>Yes </label>
+                    </li>
+                    <li>
+                        <input type="radio" name="authorized_distributers_check"
+                            formControlName="authorized_distributers_check" id="authorized_distributers_check" value="No" (change)="validators('No','authorized_distributers')">
+                        <label>No</label>
+                    </li>
+                </ul>
+                <input type="text" class="input-chart form-control" formControlName="authorized_distributers"
+                    [ngClass]="{'has-error-field' : getForm.authorized_distributers.hasError('required') && getForm.authorized_distributers.dirty}">
+                <span class="help-block"
+                    *ngIf="{'has-error' : getForm.authorized_distributers.hasError('required') && getForm.authorized_distributers.dirty}">
+                    <span
+                        *ngIf="getForm.authorized_distributers.dirty && getForm.authorized_distributers.hasError('required')">
+                        Authorized Distributors required
+                    </span>
+                </span>
+            </div>
+        </div>
+        <div class="col-lg-4 my-1">
+            <div class="margin-bottom-chart"
+                [ngClass]="{'has-error' : getForm.interesting_recipes.hasError('required') && getForm.interesting_recipes.dirty}">
+                <label class="label-chart" for="">Interesting Recipes</label>
+                <ul class="input-ul-2 my-1">
+                    <li>
+                        <input type="radio" name="interesting_recipes_check"
+                            formControlName="interesting_recipes_check" id="interesting_recipes_check" value="Yes" (change)="validators('Yes','interesting_recipes')">
+                        <label>Yes </label>
+                    </li>
+                    <li>
+                        <input type="radio" name="interesting_recipes_check"
+                            formControlName="interesting_recipes_check" id="interesting_recipes_check" value="No" (change)="validators('No','interesting_recipes')">
+                        <label>No</label>
+                    </li>
+                </ul>
+                <input type="text" class="input-chart form-control" formControlName="interesting_recipes"
+                    [ngClass]="{'has-error-field' : getForm.interesting_recipes.hasError('required') && getForm.interesting_recipes.dirty}">
+                <span class="help-block"
+                    *ngIf="{'has-error' : getForm.interesting_recipes.hasError('required') && getForm.interesting_recipes.dirty}">
+                    <span *ngIf="getForm.interesting_recipes.dirty && getForm.interesting_recipes.hasError('required')">
+                        Interesting Recipes required
+                    </span>
+                </span>
+            </div>
+        </div>
+        <div class="col-lg-4 my-1">
+            <div class="margin-bottom-chart"
+                [ngClass]="{'has-error' : getForm.nutri_score.hasError('required') && getForm.nutri_score.dirty}">
+                <label class="label-chart" for="">Nutri-Score</label>
+                <ul class="input-ul-2 my-1">
+                    <li>
+                        <input type="radio" name="nutri_score_check"
+                            formControlName="nutri_score_check" id="nutri_score_check" value="Yes" (change)="validators('Yes','nutri_score')">
+                        <label>Yes </label>
+                    </li>
+                    <li>
+                        <input type="radio" name="nutri_score_check"
+                            formControlName="nutri_score_check" id="nutri_score_check" value="No" (change)="validators('No','nutri_score')">
+                        <label>No</label>
+                    </li>
+                </ul>
+                <input type="text" class="input-chart form-control" formControlName="nutri_score"
+                    [ngClass]="{'has-error-field' : getForm.nutri_score.hasError('required') && getForm.nutri_score.dirty}">
+                    <span class="help-block"
+                    *ngIf="{'has-error' : getForm.nutri_score.hasError('required') && getForm.nutri_score.dirty}">
+                    <span *ngIf="getForm.nutri_score.dirty && getForm.nutri_score.hasError('required')">
+                        Nutri-Score required
+                    </span>
+                </span>
+            </div>
+        </div>
+        <div class="col-lg-4 my-1">
+            <div class="margin-bottom-chart"
+                [ngClass]="{'has-error' : getForm.health_warning.hasError('required') && getForm.health_warning.dirty}">
+                <label class="label-chart" for="">Health Warning</label>
+                <ul class="input-ul-2 my-1">
+                    <li>
+                        <input type="radio" name="health_warning_check"
+                            formControlName="health_warning_check" id="health_warning_check" value="Yes" (change)="validators('Yes','health_warning')">
+                        <label>Yes </label>
+                    </li>
+                    <li>
+                        <input type="radio" name="health_warning_check"
+                            formControlName="health_warning_check" id="health_warning_check" value="No" (change)="validators('No','health_warning')">
+                        <label>No</label>
+                    </li>
+                </ul>
+                <input type="text" class="input-chart form-control" formControlName="health_warning"
+                    [ngClass]="{'has-error-field' : getForm.health_warning.hasError('required') && getForm.health_warning.dirty}">
+                <span class="help-block"
+                    *ngIf="{'has-error' : getForm.health_warning.hasError('required') && getForm.health_warning.dirty}">
+                    <span *ngIf="getForm.health_warning.dirty && getForm.health_warning.hasError('required')">
+                        Health Warning required
+                    </span>
+                </span>
+            </div>
+        </div>
+        <div class="col-lg-4 my-1">
+            <div class="margin-bottom-chart"
+                [ngClass]="{'has-error' : getForm.product_warning.hasError('required') && getForm.product_warning.dirty}">
+                <label class="label-chart" for="">Product Warning</label>
+                <ul class="input-ul-2 my-1">
+                    <li>
+                        <input type="radio" name="product_warning_check"
+                            formControlName="product_warning_check" id="product_warning_check" value="Yes" (change)="validators('Yes','product_warning')">
+                        <label>Yes </label>
+                    </li>
+                    <li>
+                        <input type="radio" name="product_warning_check"
+                            formControlName="product_warning_check" id="product_warning_check" value="No" (change)="validators('No','product_warning')">
+                        <label>No</label>
+                    </li>
+                </ul>
+                <input type="text" class="input-chart form-control" formControlName="product_warning"
+                    [ngClass]="{'has-error-field' : getForm.product_warning.hasError('required') && getForm.product_warning.dirty}">
+                <span class="help-block"
+                    *ngIf="{'has-error' : getForm.product_warning.hasError('required') && getForm.product_warning.dirty}">
+                    <span *ngIf="getForm.product_warning.dirty && getForm.product_warning.hasError('required')">
+                        Product Warning required
+                    </span>
+                </span>
+            </div>
+
+        </div>
+        <div class="col-lg-6">
+            <div class="margin-bottom-chart"
+                [ngClass]="{'has-error' : getForm.about_the_company.hasError('required') && getForm.about_the_company.dirty}">
+                <label class="label-chart" for="">About the Organization</label>
+                <ul class="input-ul-2 my-1">
+                    <li>
+                        <input type="radio" name="about_the_company_check"
+                            formControlName="about_the_company_check" id="about_the_company_check" value="Yes" (change)="validators('Yes','about_the_company')">
+                        <label>Yes </label>
+                    </li>
+                    <li>
+                        <input type="radio" name="about_the_company_check"
+                            formControlName="about_the_company_check" id="about_the_company_check" value="No" (change)="validators('No','about_the_company')">
+                        <label>No</label>
+                    </li>
+                </ul>
+                <input type="text" class="input-chart form-control" formControlName="about_the_company">
+                <span class="help-block"
+                    *ngIf="{'has-error' : getForm.about_the_company.hasError('required') && getForm.about_the_company.dirty}">
+                    <span *ngIf="getForm.about_the_company.dirty && getForm.about_the_company.hasError('required')">
+                        About the Organization required
+                    </span>
+                </span>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="margin-bottom-chart"
+                [ngClass]="{'has-error' : getForm.contact_us.hasError('required') && getForm.contact_us.dirty}">
+                <label class="label-chart" for="">Contact Us</label>
+                <ul class="input-ul-2 my-1">
+                    <li>
+                        <input type="radio" name="contact_us_check"
+                            formControlName="contact_us_check" id="contact_us_check" value="Yes" (change)="validators('Yes','contact_us')">
+                        <label>Yes </label>
+                    </li>
+                    <li>
+                        <input type="radio" name="contact_us_check"
+                            formControlName="contact_us_check" id="contact_us_check" value="No" (change)="validators('No','contact_us')">
+                        <label>No</label>
+                    </li>
+                </ul>
+                <input type="text" class="input-chart form-control" formControlName="contact_us"
+                    [ngClass]="{'has-error-field' : getForm.contact_us.hasError('required') && getForm.contact_us.dirty}">
+                <span class="help-block"
+                    *ngIf="{'has-error' : getForm.contact_us.hasError('required') && getForm.contact_us.dirty}">
+                    <span *ngIf="getForm.contact_us.dirty && getForm.contact_us.hasError('required')">
+                        Contact Us required
+                    </span>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="close-right chart-under">
+        <button type="button" class="btn-chart btn btn-danger" (click)="cancel()">Cancel</button>
+        <button type="submit" class="btn-chart btn btn-primary" [disabled]="loading"><i class="fa fa-spinner fa-spin" *ngIf="loading"></i>{{getProductItem ? 'Update':'Save'}}</button>
+    </div>
+</form>

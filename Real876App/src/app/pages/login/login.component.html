@@ -1,0 +1,113 @@
+<section class="login-house">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="login-under">
+                    <div class="login-center">
+                        <div class="flex-translate">
+                            <!-- <div class="trans-1">
+                                <img class="under-im only-login-image" src="assets/images/new-logo.png">
+                            </div> -->
+
+                        </div>
+                        <img class="login-logo" src="assets/images/logo.png" alt="">
+                        <p class="login-welcome-p">Welcome to Real876-App! 👋🏻</p>
+                        <p class="login-welcome-p-1">Please sign-in to your account and start the adventure</p>
+                        <form [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
+                            <div class="form-div">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="common_mar_bottom form-group">
+                                            <label class="label-1">Email</label>
+                                            <div class="eye-real">
+                                                <input class="input-dt form-control" type="text" id="email"
+                                                    placeholder="Test@gmail.com" formControlName="email"
+                                                    [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" trim>
+                                                <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                                                    <span class="for-sub-name" *ngIf="f['email'].errors['required']">
+                                                        Email is required.
+                                                    </span>
+                                                    <span class="for-sub-name"
+                                                        *ngIf="f['email'].errors && f['email'].errors['email']">
+                                                        Please,enter valid email address.
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="common_mar_bottom form-group">
+                                            <label class="label-1">Passwoard</label>
+                                            <a class="Forgot-Password" href="javascript:void(0)"
+                                                [routerLink]="['/forgot-password']">Forgot Password?</a>
+                                            <div class="eye-real">
+                                                <input class="input-dt only__this__dot form-control" type="text"
+                                                    id="password" placeholder="⚉ ⚉ ⚉ ⚉ ⚉ ⚉ ⚉ ⚉"
+                                                    [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"
+                                                    [type]="show ? 'text' : 'password'" formControlName="password" trim>
+                                                <i [className]="show ? 'fas fa-eye right-eye' : 'fas fa-eye-slash right-eye'"
+                                                    (click)="this.show = !this.show;"></i>
+                                                <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                                                    <span class="for-sub-name" *ngIf="f['password'].errors['required']">
+                                                        Passwoard is required.
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="common_mar_bottom form-group">
+                                            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"
+                                                [checked]="checked" formControlName="isRemember">
+                                            <label for="" class="label-2">Remember me</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="common_mar_bottom form-group">
+                                            <button class="full-login BT-shadow" [disabled]="isBtnDisabled"
+                                                type="submit">Login
+                                                <i class="fa fa-spinner fa-pulse fa-3x fa-fw" style=" font-size: 22px; "
+                                                    *ngIf="isBtnDisabled"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="common_mar_bottom form-group">
+                                            <p class="Create-an-account">New on our platform?<a
+                                                    href="javascript:void(0)" [routerLink]="['/register']">Create an
+                                                    account</a></p>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="common_mar_bottom form-group">
+                                            <ul class="or__div">
+                                                <li class="or-1"></li>
+                                                <li class="or-2"><span class="or-span">or</span></li>
+                                                <li class="or-1"></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="common_mar_bottom__0 form-group">
+                                            <ul class="or__div__1">
+                                                <li><a class="BT-shadow" href="javascript:void(0)"
+                                                        (click)="signInWithFB()"><img src="assets/images/scial-1.png"
+                                                            alt=""></a></li>
+                                                <li><a class="BT-shadow" href="javascript:void(0)"
+                                                        (click)="signInWithGmail()"><img src="assets/images/scial-3.png"
+                                                            alt=""></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
